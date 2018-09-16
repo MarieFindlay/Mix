@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Comfortaa|Hind+Madurai|Monoton|News+Cycle|Open+Sans|Roboto+Slab:300|Slabo+27px");
+
+$darkestNavy: #12182d;
+$darkNavy: #2a324a;
+$lilac: #f7eafb;
+$yellow: #fff669;
+$font: "Roboto", sans-serif;
+$coctailIcon: url("cocktail-icon.svg");
+$margin: 80px;
+$font1: "Open Sans", sans-serif;
+$font2: "Slabo 27px", serif;
+$font3: "Roboto Slab", serif;
+$font4: "Comfortaa", cursive;
+$font5: "Monoton", cursive;
+$font6: "Hind Madurai", sans-serif;
+$font7: "News Cycle", sans-serif;
+
+@mixin button($width, $height, $colour, $font-size) {
+  width: $width;
+  height: $height;
+  margin: auto;
+  color: $darkestNavy;
+  background-color: $colour;
+  border-radius: 2px;
+  font-size: $font-size;
+  cursor: pointer;
+  border: none;
+}
+
+@mixin body {
+  display: flex;
+  margin-left: $margin;
+  margin-right: $margin;
+}
+
+@mixin h3 {
+  font-size: 20px;
+  letter-spacing: 0.08rem;
+}
+
+@mixin border {
+  border: 2px solid $darkNavy;
+}
+
+@mixin list {
+  padding: 0px;
+  list-style: none;
+  line-height: 25px;
+  margin-bottom: 15px;
+}
+
+@mixin table {
+  table-layout: fixed;
+  width: 100%;
+  tr {
+    line-height: 25px;
+  }
+}
