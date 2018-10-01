@@ -1,21 +1,21 @@
 <template>
-<div class="outerDiv">
-    <div class="header">
-        <div class="my">
-        <h2>M</h2>
-        <img :src="icon">
+    <div class="outerDiv">
+        <div class="header">
+            <div class="my">
+                <h2>M</h2>
+                <img :src="icon">
+            </div>
+            <h2>{{ title }}</h2>
         </div>
-        <h2>{{ title }}</h2>
+        <div class="nav">
+            <h3 @click="viewCocktails">
+                COCKTAILS
+            </h3>
+            <h3 @click="viewShoppingList">
+                SHOPPING LIST
+            </h3>
+        </div>
     </div>
-    <div class="nav">
-        <h3 style="cursor:pointer"
-        @click="viewCocktails">
-        VIEW COCKTAILS</h3>
-        <h3 style="cursor:pointer"
-        @click="viewShoppingList">
-        VIEW SHOPPING LIST</h3>
-    </div>
-</div>
 </template>
 
 <style lang="scss" scoped>
@@ -25,12 +25,25 @@
   margin: $margin $margin 60px $margin;
   display: flex;
   justify-content: space-between;
+  @include mobile {
+    margin: 20px 20px 20px 20px;
+    display: inline;
+  }
 }
 .header {
   border-bottom: solid 1px $lilac;
+  @include mobile {
+    display: flex;
+    border-bottom: none;
+    margin-left: 30px;
+    margin-bottom: -10px;
+  }
 }
 .nav {
   display: flex;
+  @include mobile {
+    display: inline;
+  }
 }
 h2 {
   font-size: 50px;
@@ -43,15 +56,26 @@ h3 {
   @include h3;
   align-self: flex-end;
   margin-bottom: 15px;
+  cursor: pointer;
+  font-family: $font5;
+  font-size: 22px;
+  letter-spacing: 2px;
+  @include mobile {
+    margin-left: 30px;
+    margin-bottom: 10px;
+  }
+}
+.my {
+  display: flex;
+  margin-bottom: -30px;
+  @include mobile {
+    margin-right: 10px;
+  }
 }
 img {
   height: 54px;
   margin-top: 11px;
   margin-left: -4px;
-}
-.my {
-  display: flex;
-  margin-bottom: -30px;
 }
 </style>
 
@@ -62,19 +86,17 @@ export default {
   data: function() {
     return {
       currentViewLocal: this.currentView,
-      title: "COCKTAILS",
+      title: "MIX",
       icon: image
     };
   },
   methods: {
     viewCocktails() {
       this.currentViewLocal = "cocktailListView";
-      this.title = "COCKTAILS";
       this.$emit("viewCocktailsWasSelected", this.currentViewLocal);
     },
     viewShoppingList() {
       this.currentViewLocal = "shoppingListView";
-      this.title = "SHOPPING LIST";
       this.$emit("viewShoppingListWasSelected", this.currentViewLocal);
     }
   }

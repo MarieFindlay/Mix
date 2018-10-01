@@ -61,6 +61,9 @@ export default {
 }
 .cocktailListBody {
   @include body;
+  @include mobile {
+    display: inline;
+  }
 }
 .cocktailList {
   flex: 1;
