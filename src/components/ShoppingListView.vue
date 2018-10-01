@@ -9,7 +9,7 @@
           :key="index">
             <tr>
               <td>{{ key.toUpperCase() }}</td>
-              <td class="col-2">{{ Math.round(item.amount * 10)/10 }} {{ pluraliseUnit( item.amount , item.unit) }}</td>
+              <td class="col-2">{{ Math.round(item.amount * 10)/10  }} {{ pluraliseUnit( item.amount , item.unit) }}</td>
             </tr>
           </table>
         </div>
@@ -35,6 +35,11 @@ export default {
       if (this.shoppingList.length > 5) {
         return true;
       } else return false;
+    },
+    convertOzToMl(amount, unit) {
+      if (unit == "oz") {
+        return amount * 30;
+      } else return amount;
     },
     pluraliseUnit(amount, unit) {
       if (unit == "dash") {
