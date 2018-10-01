@@ -1,10 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 @import url("https://fonts.googleapis.com/css?family=Comfortaa|Hind+Madurai|Monoton|News+Cycle|Open+Sans|Roboto+Slab:300|Slabo+27px");
 
-$darkestNavy: #12182d;
+$darkestNavy: #0d1532;
 $darkNavy: #2a324a;
 $lilac: #f7eafb;
 $yellow: #fff669;
+$lightYellow: #fffdd3;
 $font: "Roboto", sans-serif;
 $coctailIcon: url("cocktail-icon.svg");
 $margin: 80px;
@@ -16,16 +17,32 @@ $font5: "Monoton", cursive;
 $font6: "Hind Madurai", sans-serif;
 $font7: "News Cycle", sans-serif;
 
+@mixin mobile {
+  @media (max-width: 900px) {
+    @content;
+  }
+}
+
+@mixin smallWindow {
+  @media (max-width: 1300px) {
+    @content;
+  }
+}
+
 @mixin button($width, $height, $colour, $font-size) {
   width: $width;
   height: $height;
   margin: auto;
   color: $darkestNavy;
   background-color: $colour;
-  border-radius: 2px;
+  border-radius: 15px;
   font-size: $font-size;
   cursor: pointer;
   border: none;
+}
+
+@mixin defaultButton {
+  @include button(250px, 50px, $yellow, 17px);
 }
 
 @mixin body {
@@ -35,7 +52,7 @@ $font7: "News Cycle", sans-serif;
 }
 
 @mixin h3 {
-  font-size: 20px;
+  font-size: 17px;
   letter-spacing: 0.08rem;
 }
 
