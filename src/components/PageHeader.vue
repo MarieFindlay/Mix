@@ -2,8 +2,7 @@
     <div class="outerDiv">
         <div class="header">
             <div class="my">
-                <h2>M</h2>
-                <img :src="icon">
+                <h2>MY</h2>
             </div>
             <h2>{{ title }}</h2>
         </div>
@@ -32,6 +31,7 @@
 }
 .header {
   border-bottom: solid 1px $lilac;
+  margin-top: -20px;
   @include mobile {
     display: flex;
     border-bottom: none;
@@ -80,14 +80,12 @@ img {
 </style>
 
 <script>
-import image from "/Users/macuser/Documents/masterglass2/src/assets/cocktail.png";
 export default {
   props: ["currentView"],
   data: function() {
     return {
       currentViewLocal: this.currentView,
-      title: "MIX",
-      icon: image
+      title: "MIX"
     };
   },
   methods: {

@@ -2,19 +2,16 @@
     <div class="outerDiv">
         <h1>MIX</h1>
         <h4>COCKTAIL CALCULATOR</h4>
-        <img :src="icon">
         <button @click="updateCurrentView">PICK YOUR POISON</button>
     </div>
 </template>
 
 <script>
-import image from "/Users/macuser/Documents/masterglass2/src/assets/cocktail-icon.svg";
 export default {
   props: ["currentView"],
   data: function() {
     return {
-      currentViewLocal: this.currentView,
-      icon: image
+      currentViewLocal: this.currentView
     };
   },
   methods: {
@@ -38,7 +35,7 @@ export default {
   justify-content: center;
 }
 h1 {
-  margin-top: 3%;
+  margin-top: 150px;
   text-align: center;
   font-size: 12rem;
   letter-spacing: 0.4rem;
@@ -46,7 +43,7 @@ h1 {
   margin-bottom: -50px;
   @include mobile {
     font-size: 8rem;
-    margin-top: 0px;
+    margin-top: 100px;
   }
 }
 h4 {
