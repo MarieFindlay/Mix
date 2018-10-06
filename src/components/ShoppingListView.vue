@@ -9,7 +9,7 @@
           :key="index">
             <tr>
               <td>{{ key.toUpperCase() }}</td>
-              <td class="col-2">{{ Math.round(item.amount * 10)/10  }} {{ pluraliseUnit( item.amount , item.unit) }}</td>
+              <td class="col-2">{{ roundConvertedAmount(item.amount, item.unit) }} {{ pluraliseUnit( item.amount , item.unit) }}</td>
             </tr>
           </table>
         </div>
@@ -21,64 +21,22 @@
 </template>
 
 <script>
+import pluraliseUnit from "../functions/pluraliseUnit";
+import convertAmountToMl from "../functions/convertAmount";
+
 export default {
   props: ["shoppingList"],
-  data: function() {
-    return {};
-  },
   methods: {
+    pluraliseUnit,
+    roundConvertedAmount(amount, unit) {
+      return Math.round(convertAmountToMl(amount, unit) * 10) / 10;
+    },
     clearShoppingList() {
       this.shoppingList = null;
-      this.$emit("shoppingListWasClear", null);
+      this.$emit("shoppingListWasCleared", null);
     },
     isExpanded() {
-      if (this.shoppingList.length > 5) {
-        return true;
-      } else return false;
-    },
-    convertOzToMl(amount, unit) {
-      if (unit == "oz") {
-        return amount * 30;
-      } else return amount;
-    },
-    pluraliseUnit(amount, unit) {
-      if (unit == "dash") {
-        if (amount == 1) {
-          return "dash";
-        } else return "dashes";
-      } else if (unit == "twist") {
-        if (amount == 1) {
-          return "twist";
-        } else return "twists";
-      } else if (unit == "lime") {
-        if (amount == 1) {
-          return "lime";
-        } else return "limes";
-      } else if (unit == "tsp") {
-        if (amount == 1) {
-          return "tsp";
-        } else return "tsps";
-      } else if (unit == "cube") {
-        if (amount == 1) {
-          return "cube";
-        } else return "cubes";
-      } else if (unit == "cherry") {
-        if (amount == 1) {
-          return "cherry";
-        } else return "cherries";
-      } else if (unit == "lemon") {
-        if (amount == 1) {
-          return "lemon";
-        } else return "lemons";
-      } else if (unit == "slice") {
-        if (amount == 1) {
-          return "slice";
-        } else return "slices";
-      } else if (unit == "leaf") {
-        if (amount == 1) {
-          return "leaf";
-        } else return "leaves";
-      } else return unit;
+      return this.shoppingList.length > 5;
     }
   }
 };

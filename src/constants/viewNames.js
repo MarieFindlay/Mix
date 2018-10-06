@@ -1,0 +1,5 @@
+export default {
+  HOME: "HOME",
+  COCKTAIL_LIST: "COCKTAIL_LIST",
+  SHOPPING_LIST: "SHOPPING_LIST"
+};
