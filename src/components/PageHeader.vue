@@ -4,7 +4,7 @@
             <div class="my">
                 <h2>MY</h2>
             </div>
-            <h2>{{ title }}</h2>
+            <h2>MIX</h2>
         </div>
         <div class="nav">
             <h3 @click="viewCocktails">
@@ -16,6 +16,20 @@
         </div>
     </div>
 </template>
+
+
+<script>
+export default {
+  methods: {
+    viewCocktails() {
+      this.$emit("viewCocktailsWasSelected", "cocktailListView");
+    },
+    viewShoppingList() {
+      this.$emit("viewShoppingListWasSelected", "shoppingListView");
+    }
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 @import "../masterglass2/src/styles/app.scss";
@@ -78,26 +92,3 @@ img {
   margin-left: -4px;
 }
 </style>
-
-<script>
-export default {
-  props: ["currentView"],
-  data: function() {
-    return {
-      currentViewLocal: this.currentView,
-      title: "MIX"
-    };
-  },
-  methods: {
-    viewCocktails() {
-      this.currentViewLocal = "cocktailListView";
-      this.$emit("viewCocktailsWasSelected", this.currentViewLocal);
-    },
-    viewShoppingList() {
-      this.currentViewLocal = "shoppingListView";
-      this.$emit("viewShoppingListWasSelected", this.currentViewLocal);
-    }
-  }
-};
-</script>
-

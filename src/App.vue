@@ -6,7 +6,7 @@
       </home-view>
 
       <div class="cocktailListView" v-if="currentView=='cocktailListView'">
-        <page-header :currentView="currentView"
+        <page-header 
         @viewCocktailsWasSelected="currentView = $event"
         @viewShoppingListWasSelected="currentView = $event"
         ></page-header>
@@ -60,6 +60,11 @@ export default {
       selectedCocktail: null,
       shoppingList: null
     };
+  },
+  methods: {
+    viewCocktailsList() {
+      this.currentView = "cocktailListView";
+    }
   }
 };
 </script>
