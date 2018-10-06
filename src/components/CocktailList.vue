@@ -39,7 +39,7 @@ export default {
       });
     },
     filteredCocktails() {
-      if (this.search == null) {
+      if (this.search === null) {
         return this.sortedCocktails;
       } else {
         return this.sortedCocktails.filter(cocktail => {
@@ -53,8 +53,8 @@ export default {
       return Math.floor(this.filteredCocktails.length / this.size);
     },
     paginatedCocktails() {
-      let start = this.currentPage * this.size;
-      let end = start + this.size;
+      const start = this.currentPage * this.size;
+      const end = start + this.size;
       return this.filteredCocktails.slice(start, end);
     }
   },
@@ -63,9 +63,7 @@ export default {
       this.$emit("cocktailWasUpdated", cocktail);
     },
     isActive(cocktail) {
-      if (this.selectedCocktail == cocktail) {
-        return true;
-      } else return false;
+      return this.selectedCocktail === cocktail;
     },
     nextPage() {
       this.currentPage++;
