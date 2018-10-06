@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../masterglass2/src/styles/app.scss";
+@import "../mix/src/styles/app.scss";
 * {
   color: $lilac;
 }

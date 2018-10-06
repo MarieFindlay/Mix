@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../masterglass2/src/styles/app.scss";
+@import "../mix/src/styles/app.scss";
 .outerDiv {
   color: $lilac;
   margin: $margin $margin 60px $margin;
