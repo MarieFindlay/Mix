@@ -1,11 +1,10 @@
 <template>
     <div class="page">   
-      <home-view v-if="currentView=='homeView'"
-        :currentView="currentView"
+      <home-view v-if="currentView==VIEW_NAMES.HOME"
         @currentViewWasUpdated="currentView = $event">
       </home-view>
 
-      <div class="cocktailListView" v-if="currentView=='cocktailListView'">
+      <div class="cocktailListView" v-if="currentView==VIEW_NAMES.COCKTAIL_LIST">
         <page-header 
         @viewCocktailsWasSelected="currentView = $event"
         @viewShoppingListWasSelected="currentView = $event"
@@ -25,7 +24,7 @@
       </div>
       </div>
       
-      <div v-if="currentView=='shoppingListView'">
+      <div v-if="currentView==VIEW_NAMES.SHOPPING_LIST">
         <page-header :currentView="currentView"
         @viewCocktailsWasSelected="currentView = $event"
         @viewShoppingListWasSelected="currentView = $event"
@@ -45,6 +44,7 @@ import PageHeader from "./components/PageHeader.vue";
 import HomeView from "./components/HomeView";
 import CocktailList from "./components/CocktailList";
 import SelectedCocktailView from "./components/SelectedCocktailView";
+import VIEW_NAMES from "./constants/viewNames";
 
 export default {
   components: {
@@ -56,14 +56,15 @@ export default {
   },
   data: function() {
     return {
-      currentView: "homeView",
+      VIEW_NAMES,
+      currentView: VIEW_NAMES.HOME,
       selectedCocktail: null,
       shoppingList: null
     };
   },
   methods: {
     viewCocktailsList() {
-      this.currentView = "cocktailListView";
+      this.currentView = VIEW_NAMES.COCKTAIL_LIST;
     }
   }
 };

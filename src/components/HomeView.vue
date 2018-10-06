@@ -7,18 +7,12 @@
 </template>
 
 <script>
+import VIEW_NAMES from "../constants/viewNames";
+
 export default {
-  props: ["currentView"],
-  data: function() {
-    return {
-      currentViewLocal: this.currentView
-    };
-  },
   methods: {
     updateCurrentView() {
-      this.currentViewLocal = "cocktailListView";
-      console.log(this.currentViewLocal);
-      this.$emit("currentViewWasUpdated", this.currentViewLocal);
+      this.$emit("currentViewWasUpdated", VIEW_NAMES.COCKTAIL_LIST);
     }
   }
 };

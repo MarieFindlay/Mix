@@ -19,13 +19,15 @@
 
 
 <script>
+import VIEW_NAMES from "../constants/viewNames";
+
 export default {
   methods: {
     viewCocktails() {
-      this.$emit("viewCocktailsWasSelected", "cocktailListView");
+      this.$emit("viewCocktailsWasSelected", VIEW_NAMES.COCKTAIL_LIST);
     },
     viewShoppingList() {
-      this.$emit("viewShoppingListWasSelected", "shoppingListView");
+      this.$emit("viewShoppingListWasSelected", VIEW_NAMES.SHOPPING_LIST);
     }
   }
 };
