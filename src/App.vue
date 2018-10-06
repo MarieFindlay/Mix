@@ -40,7 +40,20 @@
 </template>
 
 <script>
+import ShoppingListView from "./components/ShoppingListView.vue";
+import PageHeader from "./components/PageHeader.vue";
+import HomeView from "./components/HomeView";
+import CocktailList from "./components/CocktailList";
+import SelectedCocktailView from "./components/SelectedCocktailView";
+
 export default {
+  components: {
+    "shopping-list-view": ShoppingListView,
+    "page-header": PageHeader,
+    "home-view": HomeView,
+    "cocktail-list": CocktailList,
+    "selected-cocktail-view": SelectedCocktailView
+  },
   data: function() {
     return {
       currentView: "homeView",
