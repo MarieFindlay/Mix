@@ -25,7 +25,45 @@
         </div>
     </div>
 </template>
+<script>
+import pluraliseUnit from "../functions/pluraliseUnit";
+import convertOzToMl from "../functions/convertAmount";
 
+export default {
+  props: ["selectedCocktail", "shoppingList"],
+  data: function() {
+    return {
+      servings: null
+    };
+  },
+  methods: {
+    pluraliseUnit,
+    convertOzToMl,
+    addToShoppingList(shoppingList, cocktailName, ingredients) {
+      if (shoppingList === null) {
+        shoppingList = {};
+      }
+      ingredients.forEach(ingredient => {
+        if (shoppingList.hasOwnProperty(ingredient.name)) {
+          shoppingList[ingredient.name].amount +=
+            this.servings * ingredient.amount;
+        } else {
+          shoppingList[ingredient.name] = {};
+          shoppingList[ingredient.name].amount =
+            this.servings * ingredient.amount;
+          shoppingList[ingredient.name].unit = ingredient.unit;
+        }
+      });
+      this.$emit("shoppingListWasUpdated", shoppingList);
+    },
+    convertOzToMl(amount, unit) {
+      if (unit == "oz") {
+        return amount * 30;
+      } else return amount;
+    }
+  }
+};
+</script>
 <style lang="scss" scoped>
 @import "../masterglass2/src/styles/app.scss";
 .outerDiv {
@@ -130,84 +168,4 @@ button {
 }
 </style>
 
-<script>
-export default {
-  props: ["selectedCocktail", "shoppingList"],
-  data: function() {
-    return {
-      servings: null
-    };
-  },
-  methods: {
-    addToShoppingList(shoppingList, cocktailName, ingredients) {
-      if (shoppingList === null) {
-        shoppingList = {};
-      }
-      ingredients.forEach(ingredient => {
-        if (shoppingList.hasOwnProperty(ingredient.name)) {
-          shoppingList[ingredient.name].amount +=
-            this.servings * ingredient.amount;
-        } else {
-          shoppingList[ingredient.name] = {};
-          shoppingList[ingredient.name].amount =
-            this.servings * ingredient.amount;
-          shoppingList[ingredient.name].unit = ingredient.unit;
-        }
-      });
-      console.log("shoppingList: ", shoppingList);
-      this.$emit("shoppingListWasUpdated", shoppingList);
-    },
-    pluraliseUnit(amount, unit) {
-      if (unit == "dash") {
-        if (amount == 1) {
-          return "dash";
-        } else return "dashes";
-      } else if (unit == "twist") {
-        if (amount == 1) {
-          return "twist";
-        } else return "twists";
-      } else if (unit == "lime") {
-        if (amount == 1) {
-          return "lime";
-        } else return "limes";
-      } else if (unit == "tsp") {
-        if (amount == 1) {
-          return "tsp";
-        } else return "tsps";
-      } else if (unit == "cube") {
-        if (amount == 1) {
-          return "cube";
-        } else return "cubes";
-      } else if (unit == "cherry") {
-        if (amount == 1) {
-          return "cherry";
-        } else return "cherries";
-      } else if (unit == "lemon") {
-        if (amount == 1) {
-          return "lemon";
-        } else return "lemons";
-      } else if (unit == "slice") {
-        if (amount == 1) {
-          return "slice";
-        } else return "slices";
-      } else if (unit == "leaf") {
-        if (amount == 1) {
-          return "leaf";
-        } else return "leaves";
-      } else if (unit == "oz") {
-        return "ml";
-      } else if (unit == "drop") {
-        if (amount == 1) {
-          return "drop";
-        } else return "drops";
-      } else return unit;
-    },
-    convertOzToMl(amount, unit) {
-      if (unit == "oz") {
-        return amount * 30;
-      } else return amount;
-    }
-  }
-};
-</script>
 
