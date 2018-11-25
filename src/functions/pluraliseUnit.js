@@ -9,9 +9,7 @@ function pluraliseUnit(amount, unit) {
     return amount === 1 ? unit : "cherries";
   } else if (unit === "leaf") {
     return amount === 1 ? unit : "leaves";
-  } else if (unit === "oz") {
-    return "ml";
-  }
+  } else return "ml";
 }
 
 export default pluraliseUnit;
