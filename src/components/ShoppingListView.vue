@@ -9,7 +9,7 @@
           :key="index">
             <tr>
               <td>{{ key.toUpperCase() }}</td>
-              <td class="col-2">{{ roundConvertedAmount(item.amount, item.unit) }} {{ pluraliseUnit( item.amount , item.unit) }}</td>
+              <td class="col-2">{{ roundConvertedAmount(item.amount, item.unit) }} {{ pluraliseUnit( item.amount, item.unit) }}</td>
             </tr>
           </table>
         </div>
