@@ -55,6 +55,7 @@ export default {
         }
       });
       this.$emit("shoppingListWasUpdated", shoppingList);
+      this.servings = null;
     },
     convertOzToMl(amount, unit) {
       if (unit == "oz") {
